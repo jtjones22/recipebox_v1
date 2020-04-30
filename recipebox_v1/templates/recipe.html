@@ -1,0 +1,6 @@
+<h2> {{ data.title }}</h2>
+<h4>Author: <a href="{% url 'author' data.author.id %}">{{ data.author }}</a></h4>
+<h4>Description: {{ data.description }}</h4>
+<h5>Time to make: {{ data.time_required }}</h5>
+<hr>
+<body> {{ data.instructions }}</body>
