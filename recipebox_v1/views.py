@@ -26,10 +26,29 @@ def recipes(request, item_id):
 
 def authors(request, item_id):
     author = Author.objects.get(id=item_id)
-    recipes = Recipe.objects.all()
+    recipes = Recipe.objects.filter(author=author)
     context = {'author': author, 'recipes': recipes}
     return render(
         request,
         'author.html',
         context
     )
+
+
+# IF we want name in url
+# def authors(request, item_author):
+#     og_name = item_author
+#     if '-' in item_author:
+#         og_name = item_author.replace('-', ' ').title()
+#     author = Author.objects.get(name=og_name)
+#     recipes = Recipe.objects.filter(author=author)
+#     context = {'author': author, 'recipes': recipes}
+#     return render(
+#         request,
+#         'author.html',
+#         context
+#     )
+
+
+# Put this in recipe.html
+# <h4>Author: <a href="{% url 'author' data.author.url %}">{{ data.author }}</a></h4>

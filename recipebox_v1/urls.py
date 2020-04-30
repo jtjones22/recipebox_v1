@@ -25,6 +25,9 @@ admin.site.register(Recipe)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('recipe/<str:item_id>', views.recipes, name='recipe'),
-    path('author/<str:item_id>', views.authors, name='author')
+    path('recipe/<str:item_id>/', views.recipes, name='recipe'),
+    path('author/<str:item_id>/', views.authors, name='author')
 ]
+
+# IF we want name in url
+# path('author/<str:item_author>/', views.authors, name='author')

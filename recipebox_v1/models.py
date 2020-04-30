@@ -8,6 +8,10 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
+    # IF we want name in url
+    # def url(self):
+    #     return "-".join(str(self.name).lower().split(" "))
+
 
 class Recipe(models.Model):
     title = models.CharField(max_length=30)

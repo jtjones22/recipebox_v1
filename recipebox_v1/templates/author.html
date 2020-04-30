@@ -2,12 +2,12 @@
 <h4>{{ author.bio }}</h4>
 <hr>
 {% for recipe in recipes %}
-    {% if author.id == recipe.author.id %}
-        <h4>{{ recipe.title }}</h4>
+        <a href="{% url 'recipe' recipe.id %}"><h4>{{ recipe.title }}</h4></a>
         <h5>Description: {{ recipe.description }}</h5>
         <h5>Time to make: {{ recipe.time_required }}</h5>
         <h3>Instructions</h3>
         <body>{{ recipe.instructions }}</body>
         <hr>
-    {% endif %}
 {% endfor %}
+
+<a href="/"><h4>Home Page</h4></a>

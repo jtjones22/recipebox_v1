@@ -3,8 +3,5 @@
 <ul>
     {% for data in recipes %}
         <li><a href="{% url 'recipe' data.id %}">{{ data.title }}</a></li>
-        <ul>
-            <li>{{ data.description }}</li>
-        </ul>
     {% endfor %}
 </ul>
