@@ -51,4 +51,8 @@ def authors(request, item_id):
 
 
 # Put this in recipe.html
-# <h4>Author: <a href="{% url 'author' data.author.url %}">{{ data.author }}</a></h4>
+# <h4>
+# Author:
+# <a href="{% url 'author' data.author.url %}">{{ data.author }}
+# </a>
+# </h4>
