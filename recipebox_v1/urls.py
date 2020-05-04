@@ -26,7 +26,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('recipe/<str:item_id>/', views.recipes, name='recipe'),
-    path('author/<str:item_id>/', views.authors, name='author')
+    path('author/<str:item_id>/', views.authors, name='author'),
+    path('addrecipe/', views.add_recipe),
+    path('addauthor/', views.add_author),
+
 ]
 
 # IF we want name in url

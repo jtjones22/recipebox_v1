@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse, HttpResponseRedirect
 
 from recipebox_v1.models import Recipe, Author
+
+from recipebox_v1.forms import AddAuthorForm, AddRecipeForm
 
 
 def index(request):
@@ -33,6 +35,40 @@ def authors(request, item_id):
         'author.html',
         context
     )
+
+
+def add_recipe(request):
+    html = 'recipeaddform.html'
+
+    if request.method == 'POST':
+        form = AddRecipeForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            Recipe.objects.create(
+                title=data['title'],
+                author=data['author'],
+                description=data['description'],
+                time_required=data['time_required'],
+                instructions=data['instructions']
+            )
+            return HttpResponseRedirect(reverse('index'))
+
+    form = AddRecipeForm()
+    context = {'form': form}
+    return render(request, html, context)
+
+
+def add_author(request):
+    html = 'authoraddform.html'
+
+    if request.method == "POST":
+        form = AddAuthorForm(request.POST)
+        form.save()
+        return HttpResponseRedirect(reverse('index'))
+
+    form = AddAuthorForm()
+    context = {'form': form}
+    return render(request, html, context)
 
 
 # IF we want name in url
