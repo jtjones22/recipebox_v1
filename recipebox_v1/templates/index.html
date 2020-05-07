@@ -1,4 +1,7 @@
 <h4>Home</h4>
+Are you authenticated? {{ request.user.is_authenticated }} <br>
+Are you staff? {{ request.user.is_staff }} <br>
+
 <h5><a href="/addauthor/">Create Author</a></h5>
 <h5><a href="/addrecipe/">Create Recipe</a></h5>
 
@@ -7,3 +10,7 @@
         <li><a href="{% url 'recipe' data.id %}">{{ data.title }}</a></li>
     {% endfor %}
 </ul>
+
+{% if request.user.is_authenticated %}
+    <a href="{% url 'logout' %}"> Logout </a>
+{% endif %}

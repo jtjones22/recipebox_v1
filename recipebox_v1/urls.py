@@ -29,7 +29,8 @@ urlpatterns = [
     path('author/<str:item_id>/', views.authors, name='author'),
     path('addrecipe/', views.add_recipe),
     path('addauthor/', views.add_author),
-
+    path('login/', views.loginview, name='login'),
+    path('logout/', views.logoutview, name='logout')
 ]
 
 # IF we want name in url
